@@ -1,5 +1,5 @@
-async function main() {
-    console.log('Hello world!');
-}
+export * from "./form";
+export * from "./layout";
+export * from "./types";
 
-main();
+export const tailwindContentRule = '**/@asmfx/tailwind-controls/{src,workarounds}/**/*.{js,ts,jsx,tsx,mdx}';
