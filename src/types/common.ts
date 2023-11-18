@@ -24,6 +24,10 @@ export type Layout = "form-control" | "raw";
 
 export type Size = "lg" | "md" | "sm" | "xs";
 
+export type DataAction = (data?: any) => ValidReturnTypes;
+
+export type LinkOrDataAction = string | DataAction;
+
 export type ValidReturnTypes = Promise<void | boolean> | void | boolean;
 
 export type UniqueValue = string | number;
@@ -34,16 +38,16 @@ export type HTMLInput = DetailedHTMLProps<
 >;
 
 export interface IBaseControlProps {
-    label?: any;
-    icon?: ReactNode;
-    controller?: IDataController;
-    name?: string;
-    variant?: Variant;
-    border?: BorderType;
-    layout?: Layout;
-    size?: Size;
-    bind?: any;
-    tag?: any;
-    disabled?: boolean;
-    children?: ReactNode;
-  }
+  label?: any;
+  icon?: ReactNode;
+  controller?: IDataController;
+  name?: string;
+  variant?: Variant;
+  border?: BorderType;
+  layout?: Layout;
+  size?: Size;
+  bind?: any;
+  tag?: any;
+  disabled?: boolean;
+  children?: ReactNode;
+}
