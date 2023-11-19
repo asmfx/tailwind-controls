@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: 214, 219, 220;
+  --background-start-rgb: 255, 255, 255;
 }
 
 html {
@@ -290,6 +290,55 @@ body {
       @apply border-0 border-b rounded-none;
       input.form-control-input {
         @apply rounded-none focus:ring-0 outline-0 placeholder:italic;
+      }
+    }
+  }
+
+  .ax-admin-container {
+    @apply fixed right-0 left-0 top-0 bottom-0;
+    .ax-header-container {
+      // Position
+      @apply fixed right-0 left-0 top-0;
+      @apply h-12;
+
+      @apply bg-color-primary text-white;
+      @apply flex flex-row;
+
+      box-shadow: 10px 10px 20px rgb(0 0 0 / 0.1);
+
+      .ax-header-logo {
+        @apply p-3 w-64;
+      }
+      .ax-header-content {
+        @apply flex grow justify-end py-3 pr-6;
+        @apply bg-white/20;
+      }
+    }
+    .ax-main-container {
+      @apply flex flex-row grow;
+      .ax-menu-container {
+        // Position
+        @apply fixed left-0 top-12 bottom-0;
+        @apply p-3 w-64;
+
+        box-shadow: 10px 10px 20px rgb(0 0 0 / 0.1);
+        @apply bg-white;
+      }
+      .ax-content-container {
+        // Position
+        @apply fixed right-0 left-64 top-12 bottom-0;
+
+        @apply flex flex-col grow;
+        @apply p-3 overflow-hidden overflow-y-auto;
+      }
+
+      &.hidden-menu {
+        .ax-menu-container {
+          @apply hidden;
+        }
+        .ax-content-container {
+          @apply left-0;
+        }
       }
     }
   }
