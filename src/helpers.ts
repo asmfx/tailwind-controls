@@ -45,6 +45,7 @@ export const $class = (options: any): string => {
       .filter(Boolean)
       .join(" ");
   }
+  return "";
 };
 
 export const stopPropagationHandler: React.MouseEventHandler = (e) => {
