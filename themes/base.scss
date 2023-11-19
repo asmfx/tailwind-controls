@@ -23,7 +23,7 @@ body {
 
 @layer components {
   .btn {
-    @apply cursor-pointer inline-block px-4 py-2 rounded-lg text-center select-none;
+    @apply cursor-pointer drop-shadow-md inline-block px-4 py-2 rounded-lg text-center select-none;
 
     &.btn-primary {
       @apply bg-color-primary hover:bg-color-primary/80;
@@ -140,13 +140,61 @@ body {
         }
 
         input.form-control-input.checked {
-          @apply ring-1 bg-color-checkbox-checked border-color-checkbox-checked/50 ring-color-checkbox-checked/50;
+          @apply ring-1 bg-color-checkbox-checked border-2 border-white ring-color-checkbox-checked;
         }
 
         .form-control-text {
           @apply cursor-pointer px-0 py-0;
           @apply border-0 grow select-none;
         }
+      }
+    }
+
+    &.form-control-checkbox-list {
+      @apply p-0;
+      .form-control-checkbox-list-input-list {
+        @apply p-0  grow;
+        &.direction-flex-col {
+          @apply flex flex-row flex-wrap;
+        }
+        &.direction-flex-row {
+          @apply flex flex-col content-start;
+        }
+        &.direction-grid-col {
+          @apply grid;
+        }
+      }
+      .form-control-checkbox.form-control-content {
+        @apply p-0 block;
+      }
+    }
+
+    &.form-control-radiobutton-list {
+      @apply p-0;
+      .form-control-radiobutton-list-input-list {
+        @apply grow gap-1.5;
+        &.direction-flex-col {
+          @apply flex flex-row flex-wrap;
+        }
+        &.direction-flex-row {
+          @apply flex flex-col;
+        }
+        &.direction-grid-col {
+          @apply grid;
+        }
+        .form-control-radiobutton-option {
+          @apply flex gap-1.5 content-start;
+          .form-control-input {
+            flex-grow: unset;
+            @apply mt-0.5 accent-color-checkbox-checked focus:ring-0 outline-0;
+          }
+          .form-control-text {
+            @apply grow;
+          }
+        }
+      }
+      .form-control-checkbox.form-control-content {
+        @apply p-0 block;
       }
     }
   }
