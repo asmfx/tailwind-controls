@@ -10,6 +10,7 @@ import {
 } from "./common";
 
 export interface IFormControlProps extends IBaseControlProps {
+  inputRef?: any;
   placeholder?: string;
   value?: any;
   errors?: any;
@@ -19,7 +20,7 @@ export interface IFormControlProps extends IBaseControlProps {
   footer?: React.ReactNode;
   readOnly?: boolean;
   onChange?: (args: {
-    value: string;
+    value: any;
     name?: string;
     tag?: any;
   }) => ValidReturnTypes;
@@ -52,7 +53,7 @@ export interface IButtonProps extends IBaseControlProps {
   data?: any;
   disabledLabel?: string;
   autoDisabled?: boolean;
-  outline?: boolean;
+  outlined?: boolean;
   onClick?: LinkOrDataAction;
 }
 
@@ -65,6 +66,8 @@ export interface InputOption {
 
 export interface ISelectProps extends IFormControlProps {
   options?: InputOption[];
+  type?: "simple" | "select2";
+  filter?: boolean | number;
   parentKey?: string;
   rootId?: any;
   seperator?: string;

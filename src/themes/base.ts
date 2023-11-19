@@ -17,6 +17,9 @@ export const colors: ResolvableTo<RecursiveKeyValuePair<string, string>> = {
     dark: twColors.slate[800],
 
     border: twColors.slate[200],
+    "border-dark": twColors.slate[400],
+
+    "checkbox-checked": twColors.lime[600],
 
     "text-primary": twColors.slate[500],
     "text-light": twColors.slate[100],

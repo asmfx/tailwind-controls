@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IModalProps } from "../types/layout";
 import { useOpacityTransition, Portal } from "@asmfx/ui-kit";
 import { Card } from "./Card";
+import { stopPropagationHandler } from "../helpers";
 
 export const Modal: React.FC<IModalProps> = (props) => {
   const { show, position, onClose, transitionDuration, raw, ...modalProps } =
@@ -12,11 +13,6 @@ export const Modal: React.FC<IModalProps> = (props) => {
     initialState: show,
     transitionDuration,
   });
-
-  const stopPropagationHandler: React.MouseEventHandler = (e) => {
-    e.stopPropagation();
-    return false;
-  };
 
   const readModalCount = (): number => {
     try {

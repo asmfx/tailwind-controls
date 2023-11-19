@@ -28,3 +28,26 @@ export const getControlErrors = (options: {
   const _errors = name && controller ? controller.errors : errors;
   return getControlValidationErrors(_errors, name);
 };
+
+export const $class = (options: any): string => {
+  if (!options) {
+    return "";
+  } else if (typeof options === "string") {
+    return options;
+  } else if (Array.isArray(options)) {
+    return options
+      .map((option) => $class(option))
+      .filter(Boolean)
+      .join(" ");
+  } else if (typeof options === "object") {
+    return Object.entries(options)
+      .map(([k, v]) => (v ? k : undefined))
+      .filter(Boolean)
+      .join(" ");
+  }
+};
+
+export const stopPropagationHandler: React.MouseEventHandler = (e) => {
+  e.stopPropagation();
+  return false;
+};

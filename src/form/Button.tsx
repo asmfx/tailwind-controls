@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IButtonProps } from "../types/form";
 import { Size } from "types/common";
+import { $class } from "helpers";
 
 export const Button: React.FC<IButtonProps> = ({
   controller,
@@ -15,7 +16,7 @@ export const Button: React.FC<IButtonProps> = ({
   disabled,
   border,
   size,
-  outline,
+  outlined,
   disabledLabel,
   autoDisabled,
   children,
@@ -54,9 +55,11 @@ export const Button: React.FC<IButtonProps> = ({
       padding: "0",
     };
   }
-  const className = `btn btn-${outline ? "outline-" : ""}${variant}${
-    size ? ` btn-${size}` : ``
-  }`;
+  const className = $class([
+    "btn",
+    outlined ? `btn-outlined-${variant}` : `btn-${variant}`,
+    { [`btn-${size}`]: size },
+  ]);
 
   const onClickHandler = async () => {
     if (onClick && typeof onClick === "function") {
