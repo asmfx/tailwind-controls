@@ -144,7 +144,6 @@ const Select2: React.FC<any> = (props) => {
   };
 
   const filterChangedHandler = (filterData) => {
-    console.log(filterData);
     setFilterValue(filterData.value);
     setOptionList(
       options?.filter((i) => RegExp(filterData.value, "i").test(i.label))

@@ -47,6 +47,19 @@ export interface ICheckboxProps extends IFormControlProps {
   text?: ReactNode;
 }
 
+export interface CheckboxListProps extends IFormControlProps {
+  direction?: "row" | "col";
+  col?: number;
+  options: string[] | InputOption[];
+  value?: any[];
+}
+
+export interface RadiobuttonListProps extends IFormControlProps {
+  direction?: "row" | "col";
+  col?: number;
+  options: string[] | InputOption[];
+}
+
 export interface IButtonProps extends IBaseControlProps {
   type?: ButtonType;
   as?: PropTypes.ReactComponentLike;

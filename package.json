@@ -1,6 +1,6 @@
 {
   "name": "@asmfx/tailwind-controls",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "keywords": [],
   "source": "src/index.ts",
@@ -26,6 +26,9 @@
     "type": "git",
     "url": "git+https://github.com/asmfx/tailwind-controls.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/asmfx/tailwind-controls/issues"
   },
@@ -40,7 +43,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@asmfx/ui-kit": "^0.0.3",
+    "@asmfx/ui-kit": "^0.0.4",
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
