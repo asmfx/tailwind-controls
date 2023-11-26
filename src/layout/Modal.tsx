@@ -5,8 +5,15 @@ import { Card } from "./Card";
 import { stopPropagationHandler } from "../helpers";
 
 export const Modal: React.FC<IModalProps> = (props) => {
-  const { show, position, onClose, transitionDuration, raw, ...modalProps } =
-    props;
+  const {
+    show,
+    position,
+    onClose,
+    transitionDuration,
+    raw,
+    noBackground,
+    ...modalProps
+  } = props;
 
   const [init, setInit] = useState(false);
   const animatedAppear = useOpacityTransition({
@@ -67,7 +74,7 @@ export const Modal: React.FC<IModalProps> = (props) => {
   return (
     <Portal>
       <div style={animatedAppear.style} className="modal-container">
-        <div className="modal-background"></div>
+        {noBackground && <div className="modal-background"></div>}
         <div
           onClick={onClose}
           className={`modal-item-container ${position || "center"}`}

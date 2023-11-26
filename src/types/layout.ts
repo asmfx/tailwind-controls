@@ -21,5 +21,6 @@ export interface IModalProps extends ICardProps {
   position?: ModalPosition;
   transitionDuration?: number;
   raw?: boolean;
+  noBackground?: boolean;
   onClose?: () => void;
 }
