@@ -247,6 +247,7 @@ body {
       @apply absolute left-0 z-10 mt-2 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 rounded-sm focus:outline-none;
 
       &.bottom-right {
+        left: unset;
         @apply right-0;
       }
       &.bottom-left {

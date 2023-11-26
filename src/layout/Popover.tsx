@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { DataAction } from "types";
 export interface IPopoverProps {
   label: React.ReactNode;
+  position?: "bottom-left" | "bottom-right";
   children: React.ReactNode;
   className?: string;
   onClosing?: DataAction;
@@ -11,7 +12,7 @@ export interface IPopoverProps {
 }
 
 export const Popover: React.FC<IPopoverProps> = (props) => {
-  const { label, className, children, onClosing, onOpening } = props;
+  const { label, className, children, position, onClosing, onOpening } = props;
   const [expanded, setExpanded] = useState(false);
   const refContainer = useRef(null);
 
@@ -45,7 +46,7 @@ export const Popover: React.FC<IPopoverProps> = (props) => {
     >
       <div onClick={expanded ? closeHandler : openHandler}>{label}</div>
       <div
-        className="ax-popover-children"
+        className={$class(["ax-popover-children", position])}
         role="menu"
         aria-orientation="vertical"
         style={!expanded ? { display: "none" } : {}}

@@ -53,6 +53,7 @@ export const Button: React.FC<IButtonProps> = ({
       justifyContent: "center",
       alignItems: "center",
       padding: "0",
+      overflow: "hidden",
     };
   }
   const className = $class([
