@@ -229,6 +229,10 @@ body {
         .modal-item {
           @apply absolute top-0 right-0 bottom-0 grid justify-stretch content-stretch;
           max-width: 95vw;
+
+          .modal-card {
+            @apply h-full overflow-auto;
+          }
         }
       }
 

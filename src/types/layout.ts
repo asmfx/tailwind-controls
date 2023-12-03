@@ -12,6 +12,7 @@ export interface ICardProps extends ILayoutControlProps {
   title?: ReactNode;
   description?: ReactNode;
   footer?: ReactNode;
+  className?: string;
 }
 
 export type ModalPosition = "center" | "right" | "left";

@@ -74,13 +74,17 @@ export const Modal: React.FC<IModalProps> = (props) => {
   return (
     <Portal>
       <div style={animatedAppear.style} className="modal-container">
-        {noBackground && <div className="modal-background"></div>}
+        {!noBackground && <div className="modal-background"></div>}
         <div
           onClick={onClose}
           className={`modal-item-container ${position || "center"}`}
         >
           <div onClick={stopPropagationHandler} className="modal-item">
-            {!!raw ? modalProps.children : <Card {...modalProps} />}
+            {!!raw ? (
+              modalProps.children
+            ) : (
+              <Card className="modal-card" {...modalProps} />
+            )}
           </div>
         </div>
       </div>
