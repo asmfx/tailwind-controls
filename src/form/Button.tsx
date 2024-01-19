@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IButtonProps } from "../types/form";
-import { Size } from "types/common";
-import { $class } from "helpers";
+import { Size } from "../types/common";
+import { $class } from "../helpers";
 
 export const Button: React.FC<IButtonProps> = ({
   controller,

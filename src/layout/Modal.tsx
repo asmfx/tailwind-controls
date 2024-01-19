@@ -68,7 +68,7 @@ export const Modal: React.FC<IModalProps> = (props) => {
   }, [show]);
 
   if (!animatedAppear.visible) {
-    return undefined;
+    return null;
   }
 
   return (

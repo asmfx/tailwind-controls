@@ -11,9 +11,15 @@ import { makeCUID } from "@asmfx/ui-kit";
 import { Popover } from "../layout/Popover";
 import { DataAction, UniqueValue } from "../types/common";
 import { Textbox } from "./Textbox";
-import { IconArrowDown } from "icons/IconArrowDown";
+import { IconArrowDown } from "../icons/IconArrowDown";
 
-const getChildItems = (tree: any[], parentKey, id, label, seperator) => {
+const getChildItems = (
+  tree: any[],
+  parentKey: string,
+  id: string | number,
+  label: string,
+  seperator: string
+) => {
   let options: InputOption[] = [];
   let childItems = tree.filter((o) => o[parentKey] === id);
   for (const child of childItems) {
@@ -28,7 +34,7 @@ const getChildItems = (tree: any[], parentKey, id, label, seperator) => {
   }
   return options;
 };
-const getTreeOptions = (tree: any[], parentKey, seperator) => {
+const getTreeOptions = (tree: any[], parentKey: string, seperator: string) => {
   let options: InputOption[] = [];
   let childItems = tree.filter((o) => !o[parentKey]);
   for (const child of childItems) {
@@ -45,9 +51,10 @@ const getTreeOptions = (tree: any[], parentKey, seperator) => {
 };
 
 const getOptions = (props: ISelectProps) => {
-  const _options = props.parentKey
-    ? getTreeOptions(props.options, props.parentKey, props.seperator || " / ")
-    : props.options;
+  const _options =
+    props.parentKey && props.options
+      ? getTreeOptions(props.options, props.parentKey, props.seperator || " / ")
+      : props.options;
 
   return _options?.map((i: any) =>
     typeof i === "string"
@@ -134,7 +141,7 @@ const Select2: React.FC<any> = (props) => {
 
   const openingHandler = isFilterEnabled
     ? () => {
-        setTimeout(() => refFilter?.current?.focus(), 100);
+        setTimeout(() => (refFilter?.current as any)?.focus(), 100);
       }
     : undefined;
 
@@ -143,10 +150,12 @@ const Select2: React.FC<any> = (props) => {
     onChange?.({ target: { value } });
   };
 
-  const filterChangedHandler = (filterData) => {
+  const filterChangedHandler = (filterData: { value: string }) => {
     setFilterValue(filterData.value);
     setOptionList(
-      options?.filter((i) => RegExp(filterData.value, "i").test(i.label))
+      options?.filter((i: { label: string }) =>
+        RegExp(filterData.value, "i").test(i.label)
+      )
     );
   };
 
@@ -214,7 +223,15 @@ const Select2: React.FC<any> = (props) => {
 };
 
 export const Select: React.FC<ISelectProps> = (props) => {
-  const { name, type, noDefault, controller, filter, placeholder } = props;
+  const {
+    name,
+    type,
+    noDefault,
+    controller,
+    filter,
+    placeholder,
+    onChange: onChangeOriginal,
+  } = props;
   const [refId] = useState(makeCUID());
   const value: string = getControlValue(props);
   const errors = getControlErrors(props);
@@ -224,7 +241,7 @@ export const Select: React.FC<ISelectProps> = (props) => {
       ? (event: React.ChangeEvent<HTMLSelectElement>) =>
           controller.changeHandler({ name, value: event.target.value })
       : (event: React.ChangeEvent<HTMLSelectElement>) =>
-          onChange?.({ name, value: event.target.value });
+          onChangeOriginal?.({ name, value: event.target.value });
 
   const options = getOptions(props);
 

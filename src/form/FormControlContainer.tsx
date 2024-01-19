@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "types/common";
+import { Layout } from "../types/common";
 
 export interface IFormControlContainerProps {
   controlKey?: string;

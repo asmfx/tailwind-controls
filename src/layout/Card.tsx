@@ -1,4 +1,4 @@
-import { $class } from "helpers";
+import { $class } from "../helpers";
 import { ICardProps } from "../types/layout";
 import React from "react";
 

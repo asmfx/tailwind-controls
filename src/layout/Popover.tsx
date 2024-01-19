@@ -1,7 +1,7 @@
-import { $class } from "helpers";
-import { useOutsideClickHandler } from "hooks/useOutsideClickHandler";
+import { $class } from "../helpers";
+import { useOutsideClickHandler } from "../hooks/useOutsideClickHandler";
 import React, { useRef, useState } from "react";
-import { DataAction } from "types";
+import { DataAction } from "../types";
 export interface IPopoverProps {
   label: React.ReactNode;
   position?: "bottom-left" | "bottom-right";

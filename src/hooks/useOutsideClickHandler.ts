@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { DataAction } from "types";
+import { DataAction } from "../types";
 
 export interface IUseOutsideClickHandlerOptions {
   ref: React.MutableRefObject<any>;
@@ -12,7 +12,7 @@ export const useOutsideClickHandler = (
 ) => {
   const { ref, data, callback } = options;
   useEffect(() => {
-    const clickHandler = (event) => {
+    const clickHandler = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
         callback(data);
       }

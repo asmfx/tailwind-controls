@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Checkbox } from "./Checkbox";
 import { CheckboxListProps, InputOption } from "../types";
 import { makeCUID } from "@asmfx/ui-kit";
-import { $class, getControlErrors, getControlValue } from "helpers";
+import { $class, getControlErrors, getControlValue } from "../helpers";
 import { FormControlContainer } from "./FormControlContainer";
 
 export const CheckboxList: React.FC<CheckboxListProps> = (props) => {
@@ -46,8 +46,8 @@ export const CheckboxList: React.FC<CheckboxListProps> = (props) => {
 
   const checkboxHandler =
     (id: any) =>
-    ({ value: state }) => {
-      if (state) {
+    ({ value }: { value: any }) => {
+      if (!!value) {
         add(id);
       } else {
         remove(id);
