@@ -22,11 +22,15 @@ export const getControlValue = (options: {
 export const getControlErrors = (options: {
   name?: string;
   errors?: any;
+  errorKeys?: string[];
   controller?: IDataController;
 }) => {
-  const { name, controller, errors } = options;
+  const { name, controller, errors, errorKeys } = options;
   const _errors = name && controller ? controller.errors : errors;
-  return getControlValidationErrors(_errors, name);
+  return [
+    ...(name ? [name] : []),
+    ...(errorKeys && Array.isArray(errorKeys) ? errorKeys : []),
+  ].flatMap((key) => getControlValidationErrors(_errors, key));
 };
 
 export const $class = (options: any): string => {

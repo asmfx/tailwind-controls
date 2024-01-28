@@ -209,7 +209,7 @@ body {
   }
 
   .modal-container {
-    @apply fixed top-0 left-0 right-0 bottom-0;
+    @apply z-20 fixed top-0 left-0 right-0 bottom-0;
 
     .modal-background {
       @apply absolute top-0 left-0 right-0 bottom-0 bg-slate-800/50;

@@ -9,21 +9,26 @@ import {
   LinkOrDataAction,
 } from "./common";
 
+export interface IChangeHandlerArgs {
+  value: any;
+  name?: string;
+  tag?: any;
+}
+export type ChangeHandler = (args: IChangeHandlerArgs) => ValidReturnTypes;
+export type BasicChangeHandler = (value: any) => ValidReturnTypes;
+
 export interface IFormControlProps extends IBaseControlProps {
   inputRef?: any;
   placeholder?: string;
   value?: any;
   errors?: any;
+  errorKeys?: string[];
   className?: string;
   suffix?: React.ReactNode;
   prefix?: React.ReactNode;
   footer?: React.ReactNode;
   readOnly?: boolean;
-  onChange?: (args: {
-    value: any;
-    name?: string;
-    tag?: any;
-  }) => ValidReturnTypes;
+  onChange?: ChangeHandler;
 }
 
 export interface ILabelProps extends Omit<IFormControlProps, "onChange"> {}
@@ -36,7 +41,10 @@ export interface IListViewerProps
 
 export interface ITextboxProps extends IFormControlProps {
   type?: TextboxType;
+  inputPattern?: string;
+  formatter?: (value: any) => any;
   maxLength?: number;
+  autoComplete?: string;
 }
 
 export interface ITextareaProps extends IFormControlProps {

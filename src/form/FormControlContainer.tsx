@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout } from "../types/common";
+import { $class } from "helpers";
 
 export interface IFormControlContainerProps {
   controlKey?: string;
@@ -7,6 +8,7 @@ export interface IFormControlContainerProps {
   refId?: string;
   label?: React.ReactNode;
   layout?: Layout;
+  isInvalid?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
   prefix?: React.ReactNode;
@@ -26,17 +28,19 @@ export const FormControlContainer: React.FC<IFormControlContainerProps> = (
     suffix,
     children,
     footer,
+    isInvalid,
   } = props;
 
-  const classNames = [
+  const className = $class([
     "form-control",
     `form-control-${controlKey}`,
     ...(layout ? [`form-control-layout-${layout}`] : []),
-  ];
+    isInvalid,
+  ]);
 
   return (
     <>
-      <div className={classNames.join(" ")}>
+      <div className={className}>
         {label && (
           <div className="form-control-label">
             <label className="form-control-label-text" htmlFor={refId || name}>

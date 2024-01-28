@@ -11,7 +11,7 @@ export const Checkbox: React.FC<ICheckboxProps> = (props) => {
   const [refId] = useState(makeCUID());
   const value: boolean = getControlValue(props);
   const errors = getControlErrors(props);
-  const isInvalid = !!errors.length;
+  const isInvalid = !!errors.length ? "is-invalid" : "";
   const changeHandler =
     controller && name
       ? (event: React.ChangeEvent<HTMLInputElement>) =>

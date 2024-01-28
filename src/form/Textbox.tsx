@@ -1,29 +1,58 @@
-import React, { useState } from "react";
-import { ITextboxProps } from "../types/form";
+import React, { useCallback, useState } from "react";
+import {
+  BasicChangeHandler,
+  ChangeHandler,
+  ITextboxProps,
+} from "../types/form";
 import { FormControlContainer } from "./FormControlContainer";
 import { $class, getControlErrors, getControlValue } from "../helpers";
-import { makeCUID } from "@asmfx/ui-kit";
+import { IDataController, makeCUID } from "@asmfx/ui-kit";
+
+const useChangeHandler = (props: {
+  name?: string;
+  controller?: IDataController;
+  onChange?: ChangeHandler;
+  inputPattern?: string;
+  formatter?: (value: any) => any;
+}): BasicChangeHandler => {
+  const { name, controller, inputPattern, onChange, formatter } = props;
+  const rgx = inputPattern ? RegExp(inputPattern, "g") : undefined;
+  const _changeHandler = useCallback(
+    (value: any) => {
+      console.log("_changeHandler", rgx, inputPattern, typeof value, value);
+      if (rgx && typeof value === "string" && !rgx.test(value)) {
+        console.log("short return");
+        return;
+      }
+      console.log("continue");
+      if (formatter) {
+        value = formatter(value);
+      }
+      if (name && controller) {
+        controller.changeHandler({ name, value });
+      } else {
+        onChange?.({ name, value });
+      }
+    },
+    [name, controller, onChange, rgx]
+  );
+  return _changeHandler;
+};
 
 export const Textbox: React.FC<ITextboxProps> = (props) => {
   const {
-    name,
     inputRef,
     type = "text",
-    controller,
-    onChange,
     placeholder,
+    maxLength,
+    autoComplete,
   } = props;
 
   const [refId] = useState(makeCUID());
   const value: string = getControlValue(props);
   const errors = getControlErrors(props);
   const isInvalid = errors.length ? " is-invalid" : "";
-  const changeHandler =
-    controller && name
-      ? (event: React.ChangeEvent<HTMLInputElement>) =>
-          controller.changeHandler({ name, value: event.target.value })
-      : (event: React.ChangeEvent<HTMLInputElement>) =>
-          onChange?.({ name, value: event.target.value });
+  const changeHandler = useChangeHandler(props);
 
   return (
     <>
@@ -42,8 +71,10 @@ export const Textbox: React.FC<ITextboxProps> = (props) => {
             },
           ])}
           placeholder={placeholder}
-          value={value}
-          onChange={changeHandler}
+          value={value || ""}
+          maxLength={maxLength}
+          onChange={(e) => changeHandler(e.target.value)}
+          autoComplete={autoComplete}
         />
       </FormControlContainer>
     </>
