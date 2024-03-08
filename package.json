@@ -1,6 +1,6 @@
 {
   "name": "@asmfx/tailwind-controls",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "",
   "keywords": [],
   "source": "src/index.ts",
@@ -16,10 +16,11 @@
     "dev-build:es-build": "node build-dev.js",
     "dev-build:esm-dts": "tsc --declarationDir dist/esm --emitDeclarationOnly --declarationMap",
     "dev-build:cjs-dts": "tsc --declarationDir dist/cjs --emitDeclarationOnly --declarationMap",
+    "version:prerelease": "yarn version --prerelease --no-git-tag-version",
     "dev-build": "run-p dev-build:*",
-    "prebuild": "run-s check clean",
-    "build": "node build-min.js",
-    "prepublish": "run-s build",
+    "build:min": "node build-min.js",
+    "build": "run-s check clean build:min version:prerelease",
+    "prepublish": "run-s check clean build:min",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -43,7 +44,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@asmfx/ui-kit": "^0.0.10",
+    "@asmfx/ui-kit": "^0.0.11",
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
