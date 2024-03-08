@@ -6,7 +6,7 @@
     "baseUrl": "./src",
     "outDir": "dist",
     "jsx": "react",
-    "strict": false,
+    "strict": true,
     "sourceMap": true,
     "declaration": true,
     "skipLibCheck": true,

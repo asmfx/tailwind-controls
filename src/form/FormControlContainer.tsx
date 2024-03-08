@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "../types/common";
-import { $class } from "helpers";
+import { $class } from "../helpers";
 
 export interface IFormControlContainerProps {
   controlKey?: string;
