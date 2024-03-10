@@ -1,6 +1,6 @@
 {
   "name": "@asmfx/tailwind-controls",
-  "version": "0.0.23",
+  "version": "0.0.24-0",
   "description": "",
   "keywords": [],
   "source": "src/index.ts",
@@ -44,7 +44,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@asmfx/ui-kit": "^0.0.13",
+    "@asmfx/ui-kit": "^0.0.14-1",
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
