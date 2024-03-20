@@ -7,7 +7,9 @@ import {
   ButtonType,
   UniqueValue,
   LinkOrDataAction,
+  Variant,
 } from "./common";
+import { ModalPosition } from "./layout";
 
 export interface IChangeHandlerArgs {
   value: any;
@@ -16,6 +18,12 @@ export interface IChangeHandlerArgs {
 }
 export type ChangeHandler = (args: IChangeHandlerArgs) => ValidReturnTypes;
 export type BasicChangeHandler = (value: any) => ValidReturnTypes;
+
+export interface IHTMLControlsProp extends IBaseControlProps {
+  className?: string;
+  editable?: boolean;
+  onChange?: ChangeHandler;
+}
 
 export interface IFormControlProps extends IBaseControlProps {
   inputRef?: any;
@@ -132,4 +140,16 @@ export interface ICrossSelectProps extends IFormControlProps {
     tag?: any;
   }) => ValidReturnTypes;
   dataType?: "int" | "string";
+}
+
+export interface ICardItemProps extends IBaseControlProps {
+  title?: string;
+  variant?: Variant;
+  icon?: ReactNode;
+  description?: string;
+  actionLabel?: string;
+  actionVariant?: Variant;
+  cancelLabel?: string;
+  cancelVariant?: Variant;
+  position?: ModalPosition;
 }

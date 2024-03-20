@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@asmfx/ui-kit@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@asmfx/ui-kit/-/ui-kit-0.0.12.tgz#28125c3cb8365b2947d4366f566f1fbc3934cdc8"
-  integrity sha512-vrcZonZBzQuPhpjsuKgNubwIgZ0EZeW5lW1y7+E3NPB01o1LhmXQ1t0i8ulajy1o3E+5lx0zmXUdiiRn0eBdww==
+"@asmfx/ui-kit@^0.0.14-6":
+  version "0.0.14-6"
+  resolved "https://npm.smartbee.uk/@asmfx/ui-kit/-/ui-kit-0.0.14-6.tgz#d914f6ec84ee4d6fdbd7ad4171cc91e17d03bcc1"
+  integrity sha512-5WGHcWtK2tewqpXGM/UdgMidFbeS3SrPYDfV+DF4YsU7c/hch4eXmAVBOlruUE+XpjM+uk/N3MpcWJXXMDLJ2A==
   dependencies:
     joi "^17.12.0"
 

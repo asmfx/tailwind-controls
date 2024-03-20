@@ -5,3 +5,4 @@ export * from "./layout";
 export * from "./types";
 export * as themes from "./themes";
 export * as config from "./TailwindConfig";
+export * as HTML from "./html";
