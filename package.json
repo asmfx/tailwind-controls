@@ -1,6 +1,6 @@
 {
   "name": "@asmfx/tailwind-controls",
-  "version": "0.0.24-6",
+  "version": "0.0.24",
   "description": "",
   "keywords": [],
   "source": "src/index.ts",
